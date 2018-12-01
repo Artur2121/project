@@ -1,35 +1,39 @@
+class LivingCreature {
+  constructor(x, y, index){
+      this.x = x;
+      this.y = y;
+      this.multiply = 0;
+      this.index = index;
+      this.directions = [
+         [this.x - 1, this.y - 1],
+         [this.x, this.y - 1],
+         [this.x + 1, this.y - 1],
+         [this.x - 1, this.y],
+         [this.x + 1, this.y],
+         [this.x - 1, this.y + 1],
+         [this.x, this.y + 1],
+         [this.x + 1, this.y + 1]
+     ];
 
-class Grass {
-  constructor(x, y) {
-    this.x = x
-    this.y = y
-    this.multiply = 25;
-    // this.index=index
-    this.directions = [
-      [this.x - 1, this.y - 1],
-      [this.x, this.y - 1],
-      [this.x + 1, this.y - 1],
-      [this.x - 1, this.y],
-      [this.x + 1, this.y],
-      [this.x - 1, this.y + 1],
-      [this.x, this.y + 1],
-      [this.x + 1, this.y + 1]
-    ];
   }
   yntrelVandak(ch) {
-    var found = [];
-    for (var i in this.directions) {
-      var x = this.directions[i][0];
-      var y = this.directions[i][1];
-      if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-
-        if (matrix[y][x] == ch) {
-          found.push(this.directions[i]);
-        }
+      var found = [];
+      for (var i in this.directions) {
+          var x = this.directions[i][0];
+          var y = this.directions[i][1];
+          if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length){
+              if (matrix[y][x] == ch) {
+                  found.push(this.directions[i]);
+              }
+          }   
       }
-    }
-    return found;
+      return found;
   }
+}
+
+class Grass extends LivingCreature{
+  
+
   bazmanal() {
     this.multiply++;
     var norVandak = random(this.yntrelVandak(0));
@@ -43,13 +47,11 @@ class Grass {
   }
 
 }
-class Xotaker {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
+class Xotaker extends LivingCreature{
+  constructor(x, y, index) {
+    super(x, y, index);
     this.energy = 5;
     this.directions = [];
-    this.index = 2;
     
   }
 
@@ -66,18 +68,8 @@ class Xotaker {
     ];
   }
   yntrelVandak(ch) {
-    this.stanalNorKordinatner()
-    var found = [];
-    for (var i in this.directions) {
-      var x = this.directions[i][0];
-      var y = this.directions[i][1];
-      if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-        if (matrix[y][x] == ch) {
-          found.push(this.directions[i]);
-        }
-      }
-    }
-    return found;
+    this.stanalNorKordinatner();
+    return super.yntrelVandak(ch);
   }
   sharjvel() {
     this.stanalNorKordinatner();
@@ -242,7 +234,7 @@ class Aryuc {
   constructor(x, y) {
     this.x = x;
     this.y = y;
-    this.energy = 5;
+    this.energy = 10;
     this.directions = [];
     this.index = 4;
     
