@@ -1,4 +1,4 @@
-class Pat {
+module.exports = class Pat {
     constructor(x, y) {
       this.x = x;
       this.y = y;
