@@ -156,3 +156,4 @@ function draw() {
         }
     }
 }
+socket.on("matrix",draw);

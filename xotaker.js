@@ -26,8 +26,8 @@ module.exports = class Xotaker extends LivingCreature{
     }
     sharjvel() {
       this.stanalNorKordinatner();
-      var datarkvandakner = this.yntrelVandak(0);
-      var norvandak = random(datarkvandakner);
+      var arr = this.yntrelVandak(0);
+      var norvandak = arr[Math.floor(Math.random() * arr.length)];
       if (norvandak) {
         matrix[this.y][this.x] = 0;
         matrix[norvandak[1]][norvandak[0]] = 2;
@@ -38,8 +38,8 @@ module.exports = class Xotaker extends LivingCreature{
     }
     eat() {
       this.stanalNorKordinatner();
-      var datarkvandakner = this.yntrelVandak(1);
-      var norvandak = random(datarkvandakner);
+      var arr = this.yntrelVandak(1);
+      var norvandak = arr[Math.floor(Math.random() * arr.length)];
   
       if (norvandak) {
   
@@ -62,7 +62,7 @@ module.exports = class Xotaker extends LivingCreature{
   
     bazmanal() {
       this.energy = 6;
-      var norVandak = random(this.yntrelVandak(0));
+      var norVandak = this.yntrelVandak(0)[Math.floor(Math.random() * this.yntrelVandak(0).length)];
       if (norVandak) {
         var norXotaker = new Xotaker(norVandak[0], norVandak[1]);
         xotakerner.push(norXotaker);

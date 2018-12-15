@@ -26,7 +26,7 @@ module.exports = class Gishatich extends LivingCreature{
     sharjvel() {
       this.stanalNorKordinatner();
       var datarkvandakner = this.yntrelVandak(0);
-      var norvandak = random(datarkvandakner);
+      var norvandak = datarkvandakner[Math.floor(Math.random() * datarkvandakner.length)];
       if (norvandak) {
         matrix[this.y][this.x] = 0;
         matrix[norvandak[1]][norvandak[0]] = 3;
@@ -38,7 +38,7 @@ module.exports = class Gishatich extends LivingCreature{
     eat() {
       this.stanalNorKordinatner();
       var datarkvandakner = this.yntrelVandak(2);
-      var norvandak = random(datarkvandakner);
+      var norvandak = datarkvandakner[Math.floor(Math.random() * datarkvandakner.length)];
       if (norvandak) {
         matrix[this.y][this.x] = 0;
         matrix[norvandak[1]][norvandak[0]] = 3;
@@ -60,7 +60,7 @@ module.exports = class Gishatich extends LivingCreature{
   
     bazmanal() {
       this.energy = 10;
-      var norVandak = random(this.yntrelVandak(0));
+      var norVandak = this.yntrelVandak(0)[Math.floor(Math.random() * this.yntrelVandak(0).length)];
       if (norVandak) {
         var  gishatich = new Gishatich(norVandak[0], norVandak[1]);
         gishatichner.push(gishatich);

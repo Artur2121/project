@@ -28,7 +28,7 @@ module.exports = class Aryuc extends LivingCreature{
     sharjvel() {
       this.stanalNorKordinatner();
       var datarkvandakner = this.yntrelVandak(0);
-      var norvandak = random(datarkvandakner);
+      var norvandak = datarkvandakner[Math.floor(Math.random() * datarkvandakner.length)];
       if (norvandak) {
         matrix[this.y][this.x] = 0;
         matrix[norvandak[1]][norvandak[0]] = 4;
@@ -40,7 +40,7 @@ module.exports = class Aryuc extends LivingCreature{
     eat() {
       this.stanalNorKordinatner();
       var datarkvandakner = this.yntrelVandak(3);
-      var norvandak = random(datarkvandakner);
+      var norvandak = datarkvandakner[Math.floor(Math.random() * datarkvandakner.length)];
   
       if (norvandak) {
   
@@ -63,7 +63,7 @@ module.exports = class Aryuc extends LivingCreature{
   
      bazmanal() {
       this.energy = 6;
-       var norVandak = random(this.yntrelVandak(0));
+       var norVandak = this.yntrelVandak(0)[Math.floor(Math.random() * this.yntrelVandak(0).length)];
       if (norVandak) {
         var norXotaker = new Aryuc(norVandak[0], norVandak[1]);
         aryucner.push(norXotaker);
