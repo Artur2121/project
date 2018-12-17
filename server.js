@@ -139,4 +139,7 @@ function drawServerayin() {
 setInterval(drawServerayin, 100);
 
 io.sockets.on("connection", function (socket) {
+    socket.on("send", function(data) {
+        console.log(data)
+    })
 }); 

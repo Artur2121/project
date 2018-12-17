@@ -67,29 +67,9 @@ module.exports = class Gishatich extends LivingCreature{
         matrix[norVandak[1]][norVandak[0]] = 3;
       }
     }
-    mahanal() {
-      // matrix[this.y][this.x] = 0;
-      //gishatichner.splice(i, 1);
-      // this.stanalNorKordinatner();
-      // var datarkvandakner = this.yntrelVandak(2);
-      // var norvandak = random(datarkvandakner);
-      //   if (norvandak) {
-      //     matrix[this.y][this.x] = 0;
-      //     matrix[norvandak[1]][norvandak[0]] = 3;
-      //     this.x = norvandak[0];
-      //     this.y = norvandak[1];
-      //     this.energy++;
-      //     for (var i in gishatichner) {
-      //       // console.log(gishatichner)
-      //       if (gishatichner[i].x == this.x && gishatichner[i].y == this.y) {
-      //         gishatichner.splice(i, 1);
-      //         break;
-      //       }
-      //     }
-      //   }
-      //   else {
-      //     this.sharjvel();
-      //   }
+    mahanal(i) {
+      matrix[this.y][this.x] = 0;
+      gishatichner.splice(i, 1);
       
     }
   
