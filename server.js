@@ -135,11 +135,32 @@ function drawServerayin() {
             xotakerner[i].mahanal(i);
         }
     }
+    io.sockets.emit("matrix", matrix)
 }
-setInterval(drawServerayin, 100);
+setInterval(drawServerayin, 250);
 
 io.sockets.on("connection", function (socket) {
     socket.on("send", function(data) {
         console.log(data)
     })
 }); 
+
+weather = "Garun"
+
+function Exanak() {
+    if (weather == "Garun"){
+        weather = "Amar"
+    }
+    else if (weather == "Amar") {
+        weather = "Ashun"
+    }
+    else if (weather == "Ashun") {
+        weather = "Dzmer"
+    }
+    else if (weather == "Dzmer") {
+        weather = "Garun"
+    }
+    io.sockets.emit("weather", weather)
+}
+
+ setInterval(Exanak, 4000)
