@@ -8,6 +8,33 @@ var g = 20
 socket.on("weather", function (data) {
   weather = data
 });
+var gameRunning = 1;
+function startGame () {
+  if(gameRunning === 0) {
+    gameRunning = 1;
+  } else {
+    gameRunning = 0;
+  }
+  socket.emit("start", gameRunning)
+}
+
+
+var gishatic = document.getElementById("gishatic");
+var xotaker = document.getElementById("xotaker");
+var xot = document.getElementById("xot");
+socket.on("stats", function (data) {
+  // gishatic = data
+  // console.log(data);
+  if(data.type === "gishatic") {
+    gishatic.innerHTML="Gitshatich:" + data.count;
+  }
+  if(data.type === "xotaker") {
+    xotaker.innerHTML="Xotaker:" + data.count;
+  }
+  if(data.type === "xot") {
+    xot.innerHTML="xot:" + data.count;
+  }
+});
 
 
 
@@ -21,7 +48,7 @@ function setup() {
 
 function drawMatrix(matrix) {
   for (var y = 0; y < matrix.length; y++) {
-console.log(weather)
+// console.log(weather)
     for (var x = 0; x < matrix[y].length; x++) {
       if (matrix[y][x] == 1 && weather == "Garun") {
         fill("#6D9E6F");

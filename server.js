@@ -101,9 +101,9 @@ for (var y = 0; y < matrix.length; ++y) {
 
 
 function drawServerayin() {
-
     for (var i in grassArr) {
         grassArr[i].bazmanal();
+        io.sockets.emit("stats", {type:"xot", count: grassArr.length})
     }
     // for(var i in xotakerner){
     //   xotakerner[i].sharjvel();
@@ -116,7 +116,8 @@ function drawServerayin() {
     }
     for (var i in gishatichner) {
         if (gishatichner[i].energy >= 18) {
-            gishatichner[i].bazmanal()
+            gishatichner[i].bazmanal();
+            io.sockets.emit("stats", {type:"gishatic", count: gishatichner.length})
         }
         else if (gishatichner[i].energy <= 0) {
             gishatichner[i].mahanal(i)
@@ -129,6 +130,7 @@ function drawServerayin() {
     for (var i in xotakerner) {
         if (xotakerner[i].energy >= 10) {
             xotakerner[i].bazmanal();
+            io.sockets.emit("stats", {type:"xotaker", count: xotakerner.length})
         }
         else if (xotakerner[i].energy <= 0) {
 
@@ -137,11 +139,16 @@ function drawServerayin() {
     }
     io.sockets.emit("matrix", matrix)
 }
-setInterval(drawServerayin, 250);
 
+
+var interval;
 io.sockets.on("connection", function (socket) {
-    socket.on("send", function(data) {
-        console.log(data)
+    socket.on("start", function(data) {
+        if ( data === 0) {
+          interval = setInterval(drawServerayin, 250);
+        } else {
+            clearInterval(interval);
+        }
     })
 }); 
 

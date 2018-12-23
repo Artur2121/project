@@ -5,12 +5,45 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
 
 	<meta charset="utf8">
+	<style>
+	.stats-block {
+		border:1px solid black;
+		width: 300px;
+		height: 150px;
+	}
+	#xot {
+		color: green;
+		font-size: 20px;
+	}
+	#gishatic{
+		color: red;
+		font-size: 20px;
+	}
+	#xotaker {
+		color: yellow;
+		font-size: 20px;
+	}
+	.button
+	{
+		color: red;
+		height: 100px;
+		width: 600px;
+		font-size: 50px;
+		font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+	}
+	</style>
 </head>
 
 <body>
-	<button onClick>Click me</button>
+		<button class="button" onclick="startGame()">Click to Start or Stop</button>
+	<div class="stats-block">
+		<div id="xotaker"></div>
+		<div id="gishatic"></div>
+		<div id="xot"></div>
+	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
 	<script type="text/javascript" src="./script.js"></script>
+	
 </body>
 
 </html>
